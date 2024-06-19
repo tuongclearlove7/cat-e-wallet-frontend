@@ -1,0 +1,157 @@
+.mainContainer {
+    margin-top: 40px;
+}
+.widgetAuthor {
+    margin-bottom: 58px;
+}
+.authorCard {
+    position: relative;
+    padding-bottom: 48px;
+    background-color: #fff;
+    box-shadow: 0 12px 20px 1px rgba(64, 64, 64, .09);
+}
+.authorCardCover {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.authorCardCover::after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    opacity: 0.5;
+}
+.authorCardCover > .btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 0 10px;
+}
+.authorCardProfile {
+    display: table;
+    position: relative;
+    margin-top: -22px;
+    padding-right: 15px;
+    padding-bottom: 16px;
+    padding-left: 20px;
+    z-index: 5;
+}
+.authorCardAvatar, .authorCardDetails {
+    display: table-cell;
+    vertical-align: middle;
+}
+.authorCardAvatar {
+    width: 85px;
+    border-radius: 50%;
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, .15);
+    overflow: hidden;
+}
+.authorCardAvatar > img {
+    display: block;
+    width: 100%;
+}
+.authorCardDetails {
+    padding-top: 20px;
+    padding-left: 15px;
+}
+.authorCardName {
+    margin-bottom: 2px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.authorCardPosition {
+    display: block;
+    color: #8c8c8c;
+    font-size: 12px;
+    font-weight: 600;
+}
+.authorCardInfo {
+    margin-bottom: 0;
+    padding: 0 25px;
+    font-size: 13px;
+}
+.authorCardSocialBarWrap {
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    width: 100%;
+}
+.authorCardSocialBar {
+    display: table;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 0 12px 20px 1px rgba(64, 64, 64, .11);
+}
+.btnStyle1BtnWhite {
+    background-color: #fff;
+}
+.listGroupItemI {
+    display: inline-block;
+    margin-top: -1px;
+    margin-right: 8px;
+    font-size: 1.2em;
+    vertical-align: middle;
+}
+.mr1, .mx1 {
+    margin-right: .25rem !important;
+    font-size: 20px;
+}
+.listGroupItemActiveNotDisabled {
+    border-color: #e7e7e7;
+    background: #fff;
+    color: #ac32e4;
+    cursor: default;
+    pointer-events: none;
+}
+.listGroupFlushLastChild {
+    border-bottom: 0;
+}
+.listGroupFlushItem {
+    border-right: 0 !important;
+    border-left: 0 !important;
+    border-radius: 0;
+}
+.listGroupItemActive {
+    z-index: 2;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.listGroupItemLastChild {
+    margin-bottom: 0;
+    border-bottom-right-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+}
+.listGroupItemAction {
+    color: #404040;
+    font-weight: 600;
+}
+.listGroupItem {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    border: 1px solid #e7e7e7 !important;
+    border-radius: 0 !important;
+    color: #404040;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.listGroupItemBase {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,0.125);
+}

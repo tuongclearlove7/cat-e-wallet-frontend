@@ -1,0 +1,48 @@
+.distance_paymentHistoryTable_top{
+
+    padding-top: 50px;
+}
+
+.distance_padding_bottom_20{
+
+    padding-bottom: 20px;
+}
+
+.loading {
+    width: 15%;
+}
+
+.padding_top_10px {
+    padding-top: 10px;
+}
+
+.margin_top_10px{
+    margin-top: 10px;
+}
+
+.loading_width_30_percent{
+    width: 30%;
+}
+
+.app_loading {
+    height: 20vmin;
+    pointer-events: none;
+    padding-bottom: 30px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+
+    .app_loading {
+        animation: loading_spin infinite 1.5s linear;
+    }
+
+}
+
+@keyframes loading_spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
