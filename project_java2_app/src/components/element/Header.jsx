@@ -52,13 +52,14 @@ const Header = (props) => {
                                     </span>
                                 );
                             })}
-                            {list_nav?.guest_routes.map((route, index)=>
+                            {!user?.accessToken && list_nav?.guest_routes.map(
+                                (route, index) => (
                                 <li key={index} className="nav-item">
                                     <NavLink className="nav-link" aria-current="page" to={route?.path}>
                                         {route?.name}
                                     </NavLink>
                                 </li>
-                            )}
+                            ))}
                         </ul>
                         <form className="d-flex" role="search">
                             <input

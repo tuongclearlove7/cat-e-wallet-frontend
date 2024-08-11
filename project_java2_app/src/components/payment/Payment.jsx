@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styles from "./Payment.module.css";
 import loading from "../../assets/img/loading_dark.gif";
 import '../../assets/css/payment.css';
@@ -16,19 +16,48 @@ const Payment = () => {
     const [input, setInput] = useState("");
     const [file, setFile] = useState();
     const [show, setShow] = useState(false);
-    const payment_data = useSelector((state) =>
+    const [error, setError] = useState('');
+    const formPaymentRef = useRef(null);
+    const [isDisabled, setIsDisabled] = useState(false);
+    const payment_data = useSelector(
+(state) =>
     state.bank_account.payment?.data);
 
+    useEffect(() => {
+        const form = formPaymentRef.current;
+        if (form) {
+            const user_bank_code = form.elements?.account_number_sent_to.value;
+            const notAllowText = /^[0-9]+$/;
+
+            if(!user_bank_code){
+                setIsDisabled(true);
+                setError("Enter your bank code, please!");
+                return;
+            }
+            if (!file) {
+                setIsDisabled(true);
+                setError("ERROR: non-existent file!!!");
+                return;
+            }
+            if (user_bank_code && !notAllowText.test(user_bank_code)) {
+                setIsDisabled(true);
+                setError('Bank code must be numeric!');
+                return;
+            }
+            setIsDisabled(false);
+            setError('');
+        }
+    }, [
+        formPaymentRef.current?.elements?.account_number_sent_to.value,
+        formPaymentRef.current?.elements?.file.value
+    ]);
     const handleInputChange = (e) =>{
         setInput(e.target.value);
     }
-
     function handleChooseFileChange(event) {
         setFile(event.target.files[0])
     }
-
-    const handleSubmitPayment = async (e) =>{
-
+    const handleSubmitPayment = async (e) => {
         e.preventDefault();
         const form = e.target;
         const user_bank_code = form.elements?.account_number_sent_to.value;
@@ -65,9 +94,7 @@ const Payment = () => {
         }
         setShow(false);
     }
-
     const handleShowPaymentToken = async ()=>{
-
         setShowToken(true);
         await new Promise(resolve => setTimeout(resolve, 2500));
         HandlePaymentToken().then();
@@ -99,9 +126,15 @@ const Payment = () => {
                                         </div>
                                         <div className="feed-item-list">
                                             <div>
-                                                <h5 className="font-size-16 mb-1">CAT E-WALLET</h5>
-                                                <div className="mb-3">
-                                                    <form onSubmit={handleSubmitPayment}>
+                                                {error ?
+                                                <b style={{color:'red'}}>
+                                                    {error}
+                                                </b> :
+                                                <h5 className="font-size-16 mb-1">
+                                                    CAT E-WALLET
+                                                </h5>}
+                                                <div className="mb-3 mt-4">
+                                                <form ref={formPaymentRef} onSubmit={handleSubmitPayment}>
                                                         <div>
                                                             <div className="row">
 
@@ -125,7 +158,7 @@ const Payment = () => {
                                                                     <div className="mb-3">
                                                                         <label className="form-label"
                                                                                htmlFor="billing-phone">
-                                                                           Your bill image
+                                                                            Your bill image
                                                                         </label>
                                                                         <input type="file"
                                                                                className="form-control"
@@ -137,9 +170,13 @@ const Payment = () => {
 
                                                                 <div className="col">
                                                                     <div className="text-end mt-2 mt-sm-0">
-                                                                        <button onClick={() => {
-                                                                        }} className="btn btn-success">
-                                                                            <i className="mdi mdi-cart-outline me-1"/> Payment
+                                                                        <button
+                                                                            onClick={() => {
+                                                                            }}
+                                                                            className="btn btn-success"
+                                                                            disabled={isDisabled}>
+                                                                            <i className="mdi mdi-cart-outline me-1"/>
+                                                                            Payment
                                                                         </button>
                                                                     </div>
                                                                 </div>

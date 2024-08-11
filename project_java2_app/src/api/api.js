@@ -9,10 +9,9 @@ import {getPaymentFailed, getPaymentStart, getPaymentSuccess}
 from "../redux/action/bank_account_action";
 
 export const api = axios.create({
-    baseURL: `http://14.225.220.42:8080`
+    baseURL: `http://localhost:8080`
+    // baseURL: `https://project-java2.onrender.com`
     //process.env.REACT_APP_URL_SERVER_HOSTNAME
-    //https://project-java2.onrender.com
-    //http://localhost:8080
 });
 
 export const notify_error = (text, time)=>{
@@ -57,6 +56,7 @@ export async function loginUser(data, dispatch, navigate){
             window.location.reload();
         }
     }catch (error) {
+        console.log(error.response?.data?.error);
         notify_error(error.response?.data?.error, 2000);
         dispatch(loginFailed({
             status: error.response?.status,

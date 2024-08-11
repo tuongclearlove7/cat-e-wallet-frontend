@@ -5,6 +5,7 @@ import {Link, NavLink, Route} from "react-router-dom";
 import list_nav from '../element/routes';
 import PaymentTable from "../payment/PaymentTable";
 import {formatVNDMoney} from "../payment/functional";
+import default_avatar from '../../assets/img/default_avt.png';
 
 const BankAccount = () => {
 
@@ -13,7 +14,6 @@ const BankAccount = () => {
     const authorities = user?.object?.authorities || [];
     const bank_account = useSelector((state) =>
     state.bank_account.bank_acc?.data);
-
 
     return (
         <div>
@@ -25,13 +25,13 @@ const BankAccount = () => {
                             <div
                                 className={`${styles.authorCardCover}`}
                                 style={{
-                                    backgroundImage: "url(https://bootdey.com/img/Content/flores-amarillas-wallpaper.jpeg)"
+                                    backgroundImage: "url('https://luatsu247.net/wp-content/uploads/2022/05/Quy-dinh-ve-tien-dien-tu-tai-Viet-Nam.jpg')"
                                 }}
                             >
                             </div>
                             <div className={`${styles.authorCardProfile}`}>
                                 <div className={`${styles.authorCardAvatar}`}>
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                                    <img src={default_avatar ? default_avatar : ''}
                                         alt="Daniel Adams"
                                     />
                                 </div>
