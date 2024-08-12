@@ -19,16 +19,14 @@ const Payment = () => {
     const [error, setError] = useState('');
     const formPaymentRef = useRef(null);
     const [isDisabled, setIsDisabled] = useState(false);
-    const payment_data = useSelector(
-(state) =>
-    state.bank_account.payment?.data);
+    const get_payment_token = useSelector((state) =>
+    state.bank_account.payment_token?.data);
 
     useEffect(() => {
         const form = formPaymentRef.current;
         if (form) {
             const user_bank_code = form.elements?.account_number_sent_to.value;
             const notAllowText = /^[0-9]+$/;
-
             if(!user_bank_code){
                 setIsDisabled(true);
                 setError("Enter your bank code, please!");
@@ -47,9 +45,14 @@ const Payment = () => {
             setIsDisabled(false);
             setError('');
         }
+        if (!get_payment_token?.payment_token) {
+            setIsDisabled(true);
+            return;
+        }
     }, [
         formPaymentRef.current?.elements?.account_number_sent_to.value,
-        formPaymentRef.current?.elements?.file.value
+        formPaymentRef.current?.elements?.file.value,
+        get_payment_token?.payment_token
     ]);
     const handleInputChange = (e) =>{
         setInput(e.target.value);

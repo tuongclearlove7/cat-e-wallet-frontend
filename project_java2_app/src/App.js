@@ -15,11 +15,6 @@ function App() {
         document.title = title;
     }, []);
 
-    useEffect(() => {
-        console.log("https://project-java2.onrender.com");
-    }, []);
-
-
   return (
       <div className="App">
           <div className={"container"}>
