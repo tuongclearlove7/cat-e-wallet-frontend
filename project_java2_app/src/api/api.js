@@ -128,7 +128,6 @@ export const getHeader = (token) =>{
 }
 export async function getApi(url, token) {
     try{
-
         const res = await api.get(url,
             {headers: getHeader(token)});
 

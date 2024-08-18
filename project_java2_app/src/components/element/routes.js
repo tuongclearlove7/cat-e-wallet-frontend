@@ -5,6 +5,7 @@ import BankAccount from "../bank/BankAccount";
 import Payment from "../payment/Payment";
 import PaymentHistory from "../payment/PaymentHistory";
 import Register from "../auth/Register";
+import User from "../admin/user/User";
 
 
 const routes = [
@@ -33,6 +34,7 @@ const routes = [
         element: <PaymentHistory />,
         isProtected: true
     },
+
 ];
 
 const guest_routes = [
@@ -46,6 +48,15 @@ const guest_routes = [
         name: "Sign up",
         path: '/sign-up',
         element: <Register />,
+    },
+];
+
+const admin_routes = [
+
+    {
+        name: "User",
+        path: '/admin/users',
+        element: <User />,
     },
 ];
 
@@ -71,5 +82,6 @@ export default {
     routes : routes,
     dropdowns : dropdowns,
     slideBars : slideBars,
-    guest_routes : guest_routes
+    guest_routes : guest_routes,
+    admin_routes: admin_routes,
 };

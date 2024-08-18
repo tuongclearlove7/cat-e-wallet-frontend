@@ -13,6 +13,7 @@ import {PersistGate} from "redux-persist/integration/react";
 import Auth from "./components/element/Auth";
 import View from "./components/Home/View";
 import Register from "./components/auth/Register";
+import User from "./components/admin/user/User";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -35,6 +36,20 @@ root.render(
                                   );
                               }
                           })}
+                          <Route path={'/admin/users'}
+                              element={<Auth>{<User/>}</Auth>}
+                          />
+                          {/*{list_nav?.admin_routes.map((route, index) => {*/}
+                          {/*    if (route.isProtected) {*/}
+                          {/*        return (*/}
+                          {/*            <Route*/}
+                          {/*                key={index}*/}
+                          {/*                path={route.path}*/}
+                          {/*                element={}*/}
+                          {/*            />*/}
+                          {/*        );*/}
+                          {/*    }*/}
+                          {/*})}*/}
                           {list_nav?.guest_routes.map((route, index) =>
                               <Route
                                   key={index}
